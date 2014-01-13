@@ -1,0 +1,33 @@
+
+body {
+    background-image:url('../images/background.gif');
+
+}
+
+h1 {
+    color:blue;
+}
+
+#content {
+    width: 60em;
+    margin: 0 auto;
+    background-color:#ffffff;
+}
+
+.question div {
+    width: 100%;
+    font-size: 2em;
+}
+.question div div {
+    padding: 1em;
+    font-size: 1em;
+}
+.option:hover {
+    background-color:#eeeeee;
+}
+.option_selected {
+    background-color:#eeeeee;
+}
+.option_selected:hover {
+    background-color:#ffffff;
+}
