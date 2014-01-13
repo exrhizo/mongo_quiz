@@ -18,15 +18,26 @@
     Answer.prototype.toString = function(){
         return this.text;
     }
+
+    Answer.prototype.toggle = function(){
+        alert(this.ref.data("state"));
+        this.ref.data("state") = !this.ref.data("state");
+        this.ref.toggleClass("option option_selected");
+    }
     Answer.prototype.toHTML = function(){
+        var ref = this;
         this.ref = $(document.createElement('div'))
+            .data("state", false)
+            .data("ref", ref)
             .addClass("option")
+            .click(function(){ ref.toggle(); })
             .append($(document.createElement('div'))
                 .html(this.text)
             )
         ;
         return this.ref;
     }
+
 
     function Question(id, text, type, answers, categories){
         this.id = id;
@@ -50,6 +61,7 @@
         this.ref = ref;
         return ref;
     }
+
     
     answers = [new Answer("Kanye",[0,1]),
                new Answer("KanyE",[1,2])];
