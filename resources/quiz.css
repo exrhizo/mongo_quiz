@@ -8,9 +8,16 @@ h1 {
     color:blue;
 }
 
-#content {
-    width: 60em;
+
+.content_desktop {
+    width: 40em;
     margin: 0 auto;
+    background-color:#ffffff;
+}
+
+.content_mobile {
+    width: 100%;
+    margin: 0;
     background-color:#ffffff;
 }
 
@@ -19,7 +26,8 @@ h1 {
     font-size: 2em;
 }
 .question div div {
-    padding: 1em;
+    padding:1em 0em;
+    text-indent: 1em;
     font-size: 1em;
 }
 .option:hover {

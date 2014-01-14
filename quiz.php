@@ -10,6 +10,30 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="resources/quiz.js"></script>
     <script type="text/javascript">
+
+    var windowsize = $(window).width() / parseFloat($("body").css("font-size"));
+    var isMoblie = windowsize < 40;
+
+    $(window).resize(function() {
+        windowsize = $(window).width() / parseFloat($("body").css("font-size"));
+        
+        if (windowsize < 40 && !isMoblie) {
+           $("#content").addClass("content_mobile");
+           $("#content").removeClass("content_desktop");
+
+           isMoblie = true;
+
+        }
+        if (windowsize >= 40 && isMoblie) {
+            $("#content").addClass("content_desktop");
+            $("#content").removeClass("content_mobile");
+            isMoblie = false;
+        }
+
+        
+    });
+
+
     function Answer(text, scores){
         this.text = text;
         this.scores = scores;
@@ -21,7 +45,7 @@
 
     Answer.prototype.toggle = function(){
         alert(this.ref.data("state"));
-        this.ref.data("state") = !this.ref.data("state");
+        this.ref.data("state", !this.ref.data("state"));
         this.ref.toggleClass("option option_selected");
     }
     Answer.prototype.toHTML = function(){
@@ -75,14 +99,16 @@
 <body>
 
 <div id="content">
+    <div class="content_mobile">
   <h1>Quiz</h1>
 
   <div class="question">
     <div>What is your favorite celibrity?</div>
-    <div id="q1_a1" class="option_selected"><div>Kanye</div></div>
+    <div id="q1_a1" class="option"><div>Kanye</div></div>
     <div id="q1_a1" class="option"><div>Kanye</div></div>
     <div id="q1_a1" class="option"><div>Kanye</div></div>
   </div>
+</div>
 </div>
 
 <script type="text/javascript">
